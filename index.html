@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hanvika Ladies Emporium</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff9f5;
+    color: #333;
+}
+
+header {
+    background: #8e245c;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+header p {
+    margin-top: 8px;
+}
+
+nav {
+    background: #f5dce9;
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    color: #8e245c;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(120deg, #f4c8d9, #fff0e7);
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #8e245c;
+    font-size: 32px;
+}
+
+.hero p {
+    margin: 15px 0;
+    font-size: 17px;
+}
+
+.shop-button {
+    display: inline-block;
+    background: #8e245c;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 12px;
+}
+
+.products {
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.products h2 {
+    color: #8e245c;
+    margin-bottom: 25px;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.product {
+    background: white;
+    width: 250px;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 12px #ddd;
+}
+
+.product img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin: 12px 0;
+}
+
+.price {
+    color: #a12661;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.order-button {
+    display: inline-block;
+    background: #218c52;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-top: 12px;
+}
+
+footer {
+    background: #8e245c;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+footer a {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    nav a {
+        margin: 5px;
+        display: inline-block;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>HANVIKA LADIES EMPORIUM</h1>
+    <p>Beautiful Collections for Every Woman</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Welcome to Hanvika!</h2>
+    <p>Explore Beautiful Jewellery & Fashion Accessories</p>
+    <a href="#products" class="shop-button">Shop Now</a>
+</section>
+
+<section class="products" id="products">
+    <h2>Our Latest Collections</h2>
+
+    <div class="product-container">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500"
+                 alt="Beautiful Earrings">
+            <h3>Beautiful Earrings</h3>
+            <p class="price">₹199</p>
+            <a class="order-button"
+               href="https://wa.me/919492238487?text=I%20want%20to%20order%20Earrings">
+               Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500"
+                 alt="Fashion Jewellery">
+            <h3>Fashion Jewellery</h3>
+            <p class="price">₹299</p>
+            <a class="order-button"
+               href="https://wa.me/919492238487?text=I%20want%20to%20order%20Jewellery">
+               Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500"
+                 alt="Traditional Jewellery">
+            <h3>Traditional Collection</h3>
+            <p class="price">₹399</p>
+            <a class="order-button"
+               href="https://wa.me/919492238487?text=I%20want%20to%20order%20Traditional%20Collection">
+               Order on WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer id="contact">
+    <h2>HANVIKA LADIES EMPORIUM</h2>
+    <p>📍 Village Road, 2nd Building, Indanpally</p>
+    <p>📞 9492238487</p>
+    <p>Instagram:
+       <a href="https://www.instagram.com/thehnfashions/">
+       @thehnfashions</a>
+    </p>
+    <p>Thank you for shopping with us!</p>
+</footer>
+
+</body>
+</html>
