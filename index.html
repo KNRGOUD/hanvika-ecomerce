@@ -248,6 +248,38 @@ footer a {
     </p>
     <p>Thank you for shopping with us!</p>
 </footer>
+<script>
+let cart = [];
 
+function addToCart(name, price) {
+  cart.push({name: name, price: price});
+  updateCart();
+}
+
+function updateCart() {
+  let count = document.getElementById("cart-count");
+  let items = document.getElementById("cart-items");
+  let total = document.getElementById("cart-total");
+
+  count.innerText = cart.length;
+
+  let sum = 0;
+  items.innerHTML = "";
+
+  cart.forEach(function(product) {
+    sum += product.price;
+
+    items.innerHTML +=
+      "<p>" + product.name +
+      " - ₹" + product.price + "</p>";
+  });
+
+  if (cart.length === 0) {
+    items.innerHTML = "Your cart is empty.";
+  }
+
+  total.innerText = sum;
+}
+</script>
 </body>
 </html>
