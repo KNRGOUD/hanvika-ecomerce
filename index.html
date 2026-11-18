@@ -323,8 +323,8 @@ let cart = [];
 function addToCart(name, price) {
 
   let existing = cart.find(
-    item => item.name === name
-  );
+  item => item.name === name && item.price === price
+);
 
   if (existing) {
     existing.quantity++;
@@ -383,11 +383,16 @@ function updateCart() {
 
 function removeFromCart(index) {
 
-  cart.splice(index, 1);
+  if (index >= 0 && index < cart.length) {
 
-  updateCart();
+    cart = cart.filter(function(product, i) {
+      return i !== index;
+    });
+
+    updateCart();
+
+  }
 }
-
 function toggleCart() {
 
   document.getElementById("cart-modal")
