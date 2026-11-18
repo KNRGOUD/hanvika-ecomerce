@@ -371,30 +371,31 @@ function updateCart() {
 
   let items = document.getElementById("cart-items");
 
-  items.innerHTML = "";
+ 
+items.innerHTML += `
+  <div class="cart-product">
+    <div>
+      <strong>${product.name}</strong>
+      <p>Price: ₹${product.price}</p>
 
-  cart.forEach(function(product, index) {
+      <div class="quantity-controls">
+        <button onclick="decreaseQuantity(${index})">−</button>
 
-    count += product.quantity;
+        <span>${product.quantity}</span>
 
-    let subtotal = product.price * product.quantity;
-
-    total += subtotal;
-
-    items.innerHTML += `
-      <div class="cart-product">
-        <div>
-          <strong>${product.name}</strong>
-          <p>₹${product.price} × ${product.quantity}</p>
-          <strong>₹${subtotal}</strong>
-        </div>
-
-        <button class="remove-btn"
-          onclick="removeFromCart(${index})">
-          Remove
-        </button>
+        <button onclick="increaseQuantity(${index})">+</button>
       </div>
-    `;
+
+      <strong>Subtotal: ₹${subtotal}</strong>
+    </div>
+
+    <button class="remove-btn"
+      onclick="removeFromCart(${index})">
+      Remove
+    </button>
+  </div>
+`;
+
   });
 
   if (cart.length === 0) {
