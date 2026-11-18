@@ -343,20 +343,21 @@ footer a {
     <p>Thank you for shopping with us!</p>
 </footer>
 <script>
+
 let cart = [];
 
 function addToCart(name, price) {
 
   let existing = cart.find(
-  item => item.name === name && item.price === price
-);
+    item => item.name === name && item.price === price
+  );
 
   if (existing) {
     existing.quantity++;
   } else {
     cart.push({
       name: name,
-      price: price,
+      price: Number(price),
       quantity: 1
     });
   }
@@ -371,31 +372,41 @@ function updateCart() {
 
   let items = document.getElementById("cart-items");
 
- 
-items.innerHTML += `
-  <div class="cart-product">
-    <div>
-      <strong>${product.name}</strong>
-      <p>Price: ₹${product.price}</p>
+  if (!items) return;
 
-      <div class="quantity-controls">
-        <button onclick="decreaseQuantity(${index})">−</button>
+  items.innerHTML = "";
 
-        <span>${product.quantity}</span>
+  cart.forEach(function(product, index) {
 
-        <button onclick="increaseQuantity(${index})">+</button>
+    count += product.quantity;
+
+    let subtotal = product.price * product.quantity;
+
+    total += subtotal;
+
+    items.innerHTML += `
+      <div class="cart-product">
+        <div>
+          <strong>${product.name}</strong>
+          <p>Price: ₹${product.price}</p>
+
+          <div class="quantity-controls">
+            <button onclick="decreaseQuantity(${index})">−</button>
+
+            <span>${product.quantity}</span>
+
+            <button onclick="increaseQuantity(${index})">+</button>
+          </div>
+
+          <strong>Subtotal: ₹${subtotal}</strong>
+        </div>
+
+        <button class="remove-btn"
+          onclick="removeFromCart(${index})">
+          Remove
+        </button>
       </div>
-
-      <strong>Subtotal: ₹${subtotal}</strong>
-    </div>
-
-    <button class="remove-btn"
-      onclick="removeFromCart(${index})">
-      Remove
-    </button>
-  </div>
-`;
-
+    `;
   });
 
   if (cart.length === 0) {
@@ -403,50 +414,45 @@ items.innerHTML += `
   }
 
   document.getElementById("cart-count").innerText = count;
-
   document.getElementById("cart-total").innerText = total;
 }
 
-function removeFromCart(index) {
-   
 function increaseQuantity(index) {
 
-  cart[index].quantity++;
-
-  updateCart();
+  if (cart[index]) {
+    cart[index].quantity++;
+    updateCart();
+  }
 }
 
 function decreaseQuantity(index) {
 
-  if (cart[index].quantity > 1) {
+  if (cart[index]) {
 
-    cart[index].quantity--;
-
-  } else {
-
-    cart.splice(index, 1);
-
-  }
-
-  updateCart();
-}
- 
-
-  if (index >= 0 && index < cart.length) {
-
-    cart = cart.filter(function(product, i) {
-      return i !== index;
-    });
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
+      cart.splice(index, 1);
+    }
 
     updateCart();
-
   }
 }
+
+function removeFromCart(index) {
+
+  if (index >= 0 && index < cart.length) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+}
+
 function toggleCart() {
 
   document.getElementById("cart-modal")
     .classList.toggle("show");
 }
+
 
 </script>
     <div id="cart-modal" class="cart-modal">
