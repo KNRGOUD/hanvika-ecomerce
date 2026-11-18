@@ -458,6 +458,41 @@ function toggleCart() {
     <div id="cart-modal" class="cart-modal">
   <div class="cart-box">
     <button class="close-cart" onclick="toggleCart()">✕</button>
+     
+function placeOrder() {
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let message = "Hello Hanvika Ladies Emporium!\n";
+  message += "I want to place an order:\n\n";
+
+  let total = 0;
+
+  cart.forEach(function(product, index) {
+
+    let subtotal = product.price * product.quantity;
+
+    total += subtotal;
+
+    message += (index + 1) + ". " + product.name + "\n";
+    message += "Price: Rs." + product.price + "\n";
+    message += "Quantity: " + product.quantity + "\n";
+    message += "Subtotal: Rs." + subtotal + "\n\n";
+  });
+
+  message += "Total Amount: Rs." + total;
+
+  let phone = "919492238487";
+
+  let url = "https://wa.me/" + phone +
+            "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+ 
 
     <h2>🛒 My Shopping Cart</h2>
 
