@@ -453,12 +453,6 @@ function toggleCart() {
     .classList.toggle("show");
 }
 
-
-</script>
-    <div id="cart-modal" class="cart-modal">
-  <div class="cart-box">
-    <button class="close-cart" onclick="toggleCart()">✕</button>
-     
 function placeOrder() {
 
   if (cart.length === 0) {
@@ -492,8 +486,13 @@ function placeOrder() {
 
   window.open(url, "_blank");
 }
- 
 
+
+</script>
+    <div id="cart-modal" class="cart-modal">
+  <div class="cart-box">
+    <button class="close-cart" onclick="toggleCart()">✕</button>
+     
     <h2>🛒 My Shopping Cart</h2>
 
     <div id="cart-items"></div>
