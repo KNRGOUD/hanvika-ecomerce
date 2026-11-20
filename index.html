@@ -318,7 +318,7 @@ footer a {
 
     <div class="product-container">
 
-        <div class="product">
+        <div class="product" data-category="Beautiful Earrings">
             <img src="images/earring-1.jpeg"
      alt="Earrings">
             <h3>Beautiful Earrings</h3>
@@ -331,7 +331,7 @@ footer a {
             </a>
         </div>
 
-        <div class="product">
+        <div class="product" data-category="Fashion Jewellery">
             <img src="images/earring-2.jpeg"
      alt="Earrings">
             <h3>Fashion Jewellery</h3>
@@ -344,7 +344,7 @@ footer a {
             </a>
         </div>
 
-        <div class="product">
+        <div class="product" data-category=Tradtional Collection">
             <img src="images/earring-3.jpeg"
      alt="Earrings">
             <h3>Traditional Collection</h3>
@@ -515,6 +515,25 @@ function placeOrder() {
   window.open(url, "_blank");
 }
 
+
+function filterProducts(category) {
+
+  const allProducts = document.querySelectorAll(".product");
+
+  allProducts.forEach(function(product) {
+
+    if (
+      category === "All" ||
+      product.dataset.category === category
+    ) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+
+  });
+
+}
 
 </script>
     <div id="cart-modal" class="cart-modal">
