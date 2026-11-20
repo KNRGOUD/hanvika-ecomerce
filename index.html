@@ -503,15 +503,39 @@ function toggleCart() {
     .classList.toggle("show");
 }
 
+function placeOrder() 
 function placeOrder() {
 
+  // Check empty cart
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
 
-  let message = "Hello Hanvika Ladies Emporium!\n";
-  message += "I want to place an order:\n\n";
+  // Get customer details
+  let name = document.getElementById("customerName").value.trim();
+  let mobile = document.getElementById("customerMobile").value.trim();
+
+  // Validate name
+  if (name === "") {
+    alert("Please enter your name!");
+    return;
+  }
+
+  // Validate mobile number
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert("Please enter a valid 10-digit mobile number!");
+    return;
+  }
+
+  // Create WhatsApp message
+  let message = "Hello Hanvika Ladies Emporium!\n\n";
+
+  message += "CUSTOMER DETAILS\n";
+  message += "Name: " + name + "\n";
+  message += "Mobile: " + mobile + "\n\n";
+
+  message += "ORDER DETAILS\n";
 
   let total = 0;
 
@@ -525,10 +549,13 @@ function placeOrder() {
     message += "Price: Rs." + product.price + "\n";
     message += "Quantity: " + product.quantity + "\n";
     message += "Subtotal: Rs." + subtotal + "\n\n";
+
   });
 
-  message += "Total Amount: Rs." + total;
+  message += "Total Amount: Rs." + total + "\n\n";
+  message += "Thank you!";
 
+  // Shop WhatsApp number
   let phone = "919492238487";
 
   let url = "https://wa.me/" + phone +
@@ -536,6 +563,7 @@ function placeOrder() {
 
   window.open(url, "_blank");
 }
+
 
 
 function filterProducts(category) {
