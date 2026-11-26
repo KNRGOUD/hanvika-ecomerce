@@ -527,29 +527,16 @@ function placeOrder() {
     return;
   }
 
-  // Create WhatsApp message
-  let message = "Hello Hanvika Ladies Emporium!\n\n";
+  // Generate Order ID and Date
+let orderId = "HNF" + Date.now().toString().slice(-6);
 
-  message += "CUSTOMER DETAILS\n";
-  message += "Name: " + name + "\n";
-  message += "Mobile: " + mobile + "\n\n";
+let orderDate = new Date().toLocaleString("en-IN");
 
-  message += "ORDER DETAILS\n";
+// Create WhatsApp message
+let message = "Hello Hanvika Ladies Emporium!\n\n";
 
-  let total = 0;
-
-  cart.forEach(function(product, index) {
-
-    let subtotal = product.price * product.quantity;
-
-    total += subtotal;
-
-    message += (index + 1) + ". " + product.name + "\n";
-    message += "Price: Rs." + product.price + "\n";
-    message += "Quantity: " + product.quantity + "\n";
-    message += "Subtotal: Rs." + subtotal + "\n\n";
-
-  });
+message += "ORDER ID: " + orderId + "\n";
+message += "ORDER DATE: " + orderDate + "\n\n";
 
   message += "Total Amount: Rs." + total + "\n\n";
   message += "Thank you!";
