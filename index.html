@@ -552,7 +552,34 @@ function placeOrder() {
 
   message += "Total Amount: Rs." + total + "\n\n";
   message += "Thank you!";
+// Save Order History
 
+let order = {
+  orderId: orderId,
+  orderDate: orderDate,
+  customerName: name,
+  mobile: mobile,
+  products: cart.map(function(item) {
+    return {
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity
+    };
+  }),
+  total: total,
+  status: "New Order"
+};
+
+let orders = JSON.parse(
+  localStorage.getItem("hanvikaOrders") || "[]"
+);
+
+orders.push(order);
+
+localStorage.setItem(
+  "hanvikaOrders",
+  JSON.stringify(orders)
+);
   let phone = "919492238487";
 
   let url = "https://wa.me/" + phone +
