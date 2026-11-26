@@ -497,51 +497,62 @@ function removeFromCart(index) {
   }
 }
 
-function toggleCart() {
 
-  document.getElementById("cart-modal")
-    .classList.toggle("show");
-}
- 
 function placeOrder() {
 
-  // Check empty cart
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
 
-  // Get customer details
   let name = document.getElementById("customerName").value.trim();
   let mobile = document.getElementById("customerMobile").value.trim();
 
-  // Validate name
   if (name === "") {
     alert("Please enter your name!");
     return;
   }
 
-  // Validate mobile number
   if (!/^[0-9]{10}$/.test(mobile)) {
     alert("Please enter a valid 10-digit mobile number!");
     return;
   }
 
-  // Generate Order ID and Date
-let orderId = "HNF" + Date.now().toString().slice(-6);
+  // Generate Order ID
+  let orderId = "HNF" + Date.now().toString().slice(-6);
 
-let orderDate = new Date().toLocaleString("en-IN");
+  // Generate Order Date
+  let orderDate = new Date().toLocaleString("en-IN");
 
-// Create WhatsApp message
-let message = "Hello Hanvika Ladies Emporium!\n\n";
+  // WhatsApp Message
+  let message = "Hello Hanvika Ladies Emporium!\n\n";
 
-message += "ORDER ID: " + orderId + "\n";
-message += "ORDER DATE: " + orderDate + "\n\n";
+  message += "ORDER ID: " + orderId + "\n";
+  message += "ORDER DATE: " + orderDate + "\n\n";
+
+  message += "CUSTOMER DETAILS\n";
+  message += "Name: " + name + "\n";
+  message += "Mobile: " + mobile + "\n\n";
+
+  message += "ORDER DETAILS\n";
+
+  let total = 0;
+
+  cart.forEach(function(product, index) {
+
+    let subtotal = product.price * product.quantity;
+    total += subtotal;
+
+    message += (index + 1) + ". " + product.name + "\n";
+    message += "Price: Rs." + product.price + "\n";
+    message += "Quantity: " + product.quantity + "\n";
+    message += "Subtotal: Rs." + subtotal + "\n\n";
+
+  });
 
   message += "Total Amount: Rs." + total + "\n\n";
   message += "Thank you!";
 
-  // Shop WhatsApp number
   let phone = "919492238487";
 
   let url = "https://wa.me/" + phone +
@@ -549,6 +560,7 @@ message += "ORDER DATE: " + orderDate + "\n\n";
 
   window.open(url, "_blank");
 }
+
 
   function filterProducts(category) {
 
