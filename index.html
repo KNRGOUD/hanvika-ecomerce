@@ -584,7 +584,19 @@ function placeOrder() {
   });
 
 }
+// Cart Open and Close Function
+window.toggleCart = function() {
 
+  const cartModal = document.getElementById("cart-modal");
+
+  if (!cartModal) {
+    alert("Cart modal not found!");
+    return;
+  }
+
+  cartModal.classList.toggle("show");
+
+};
 </script>
     <div id="cart-modal" class="cart-modal">
   <div class="cart-box">
