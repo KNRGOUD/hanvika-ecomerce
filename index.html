@@ -567,15 +567,21 @@ function placeOrder() {
 
 function filterProducts(category) {
 
+  function filterProducts(category) {
+
   const allProducts = document.querySelectorAll(".product");
 
   allProducts.forEach(function(product) {
 
+    const productCategory = product
+      .getAttribute("data-category")
+      .trim();
+
     if (
       category === "All" ||
-      product.dataset.category === category
+      productCategory === category
     ) {
-      product.style.display = "block";
+      product.style.display = "";
     } else {
       product.style.display = "none";
     }
